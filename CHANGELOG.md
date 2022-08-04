@@ -1,5 +1,11 @@
 # CHANGELOG #
 All the changes, features, actions that have happened to the project.
+## 2022-08-04
+
+### Added
+
+- Prototyped the second version of the PoC (Proof of Concept) in PHP, I'll go for a simpler one for the first version.
+
 
 ## 2021-12-17
 ### Added
