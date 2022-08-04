@@ -1,6 +1,11 @@
 <?php
 $current_date = date('d/m/Y', time());
 
+$entry = [
+  'id' => 0,
+  'text' => 'test',
+];
+
 if (!empty($_POST)) {
   switch ($_POST['submit']) {
     case 'Save/Update':
@@ -10,14 +15,17 @@ if (!empty($_POST)) {
       $entry = $_POST['entry'];
       break;
     case 'Change!':
-      var_dump($_POST['date']);
+      var_dump($_GET['date']);
+      $current_date = $_GET['date'];
       break;
   }
-} else {
-  $entry = [
-    'id' => 0,
-    'text' => 'test',
-  ];
+} else if (!empty($_GET)) {
+  switch ($_GET['submit']) {
+    case 'Change!':
+      var_dump($_GET['date']);
+      $current_date = $_GET['date'];
+      break;
+  }
 }
 ?>
 
@@ -45,7 +53,7 @@ if (!empty($_POST)) {
     <form method="GET" action="" class="p-3 shadow rounded m-sm-3 form" style="max-width: 350px;">
       <label for="date" class="form-label">Current date:</label>
       <div class="input-group">
-        <input type="date" class="form-control" name="date" value="Change">
+        <input type="date" class="form-control" name="date" value="<?= $current_date ?>">
         <input type="submit" class="input-group-btn btn btn-primary" name="submit" value="Change!">
       </div>
     </form>
