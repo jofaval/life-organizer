@@ -5,6 +5,8 @@ All the changes, features, actions that have happened to the project.
 ### Added
 
 - Prototyped the second version of the PoC (Proof of Concept) in PHP, I'll go for a simpler one for the first version.
+- Started prototyping the first version, looking good.
+
 
 
 ## 2021-12-17
