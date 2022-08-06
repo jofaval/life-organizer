@@ -1,5 +1,12 @@
 # CHANGELOG #
 All the changes, features, actions that have happened to the project.
+
+## 2022-08-06
+
+### Modified
+
+- Finished first version of the prototype
+
 ## 2022-08-04
 
 ### Added

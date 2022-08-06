@@ -1,32 +1,32 @@
 <?php
-$current_date = date('d/m/Y', time());
 
-$entry = [
-  'id' => 0,
-  'text' => 'test',
-];
-
-if (!empty($_POST)) {
-  switch ($_POST['submit']) {
-    case 'Save/Update':
-      echo '<pre>';
-      var_dump($_POST);
-      echo '</pre>';
-      $entry = $_POST['entry'];
-      break;
-    case 'Change!':
-      var_dump($_GET['date']);
-      $current_date = $_GET['date'];
-      break;
-  }
-} else if (!empty($_GET)) {
-  switch ($_GET['submit']) {
-    case 'Change!':
-      var_dump($_GET['date']);
-      $current_date = $_GET['date'];
-      break;
-  }
+/**
+ * Joins different paths into one
+ * @return string The new absolute/relative path
+ */
+function j(): string
+{
+  return join(DIRECTORY_SEPARATOR, func_get_args());
 }
+
+$current_date = date('d/m/Y', time());
+$current_date = date('Y-m-d', time());
+
+if (isset($_POST['entry']['day'])) {
+  $current_date = $_POST['entry']['day'];
+}
+
+$conn = null;
+
+require_once j(__DIR__, 'config.php');
+require_once j(__DIR__, 'db.php');
+require_once j(__DIR__, 'form.php');
+
+$entry = get_entry_by_date($current_date);
+// var_dump($entry['id'] != -1);
+
+checkSubmit();
+
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +61,7 @@ if (!empty($_POST)) {
       <legend class="legend mb-3">Notepad formulary for <?= $current_date ?></legend>
 
       <!-- SECURITY RISK, BUT IT'S JUST A POC -->
+      <input type="hidden" name="entry[day]" value="<?= $current_date ?>">
       <input type="hidden" name="entry[id]" id="entryId" value="<?= $entry['id'] ?>">
 
       <textarea type=" text" class="form-control textarea" id="entryText" name="entry[text]"><?= $entry['text'] ?></textarea>
