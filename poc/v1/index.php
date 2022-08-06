@@ -23,7 +23,6 @@ require_once j(__DIR__, 'db.php');
 require_once j(__DIR__, 'form.php');
 
 $entry = get_entry_by_date($current_date);
-// var_dump($entry['id'] != -1);
 
 checkSubmit();
 

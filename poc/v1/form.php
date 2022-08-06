@@ -69,26 +69,14 @@ function saveOrUpdate(): void
       $conn,
       "SELECT * FROM journal WHERE `day` = '{$entry['day']}' LIMIT 1"
     );
-    // echo '<pre>';
-    // var_dump('Query result');
-    // var_dump($query_result);
-    // echo '</pre>';
 
     $entry = $query_result->fetch_assoc();
   }
-
-  echo '<pre>';
-  var_dump($success);
-  var_dump($query);
-  var_dump($_POST);
-  echo '</pre>';
 }
 
 function changeDate(): void
 {
   global $current_date;
-
-  // var_dump($_GET['date']);
   $current_date = $_GET['date'];
 }
 
@@ -99,7 +87,6 @@ function get_entry_by_date(string $date): array
   $query_result = $conn->query("SELECT * FROM journal WHERE `day` = '{$date}' LIMIT 1");
 
   if ($query_result->num_rows > 0) {
-    // var_dump("SELECT * FROM journal WHERE `day` = '{$date}'", $query_result);
     return $query_result->fetch_assoc();
   }
 
