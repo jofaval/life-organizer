@@ -1,6 +1,12 @@
 # CHANGELOG #
 All the changes, features, actions that have happened to the project.
 
+## 2022-08-20
+
+### Modified
+
+- Added `life_organizer_v1_` prefix to table first prototype
+
 ## 2022-08-06
 
 ### Modified

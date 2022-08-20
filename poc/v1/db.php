@@ -15,7 +15,7 @@ $conn = create_mysql_connection();
 
 function init_db(\mysqli $conn): bool
 {
-    $result = mysqli_query($conn, "CREATE Table If Not Exists journal(
+    $result = mysqli_query($conn, "CREATE Table If Not Exists life_organizer_v1_journal(
         `id` Int Primary Key AUTO_INCREMENT,
         `day` Date Not Null,
         `text` Text Not Null,
